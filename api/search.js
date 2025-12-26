@@ -15,13 +15,13 @@ export default async function handler(req, res) {
         const { query } = req.body;
 
         if (!query) {
-            return res.status(400).json({ error: 'Query obrigatória' });
+            return res.status(400).json({ error: 'Query obrigatoria' });
         }
 
         const SERPER_API_KEY = process.env.SERPER_API_KEY;
 
         if (!SERPER_API_KEY) {
-            return res.status(500).json({ error: 'API Key não configurada' });
+            return res.status(500).json({ error: 'API Key nao configurada' });
         }
 
         const response = await fetch('https://google.serper.dev/search', {
@@ -62,14 +62,12 @@ export default async function handler(req, res) {
 }
 ```
 
-6. Clique em **"Commit changes"** (botão verde)
+---
+
+### 5. Clique no botão verde "Commit changes"
 
 ---
 
-### 2. Aguarde o Vercel fazer redeploy (1-2 minutos)
-
----
-
-### 3. Teste acessando:
+### 6. Aguarde 2 minutos e teste:
 ```
 https://quiz-search-api.vercel.app/api/search
