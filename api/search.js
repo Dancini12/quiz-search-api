@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -59,15 +59,15 @@ export default async function handler(req, res) {
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
-}
+};
 ```
 
 ---
 
-### 5. Clique no botão verde "Commit changes"
+### 4. Clique em "Commit changes"
 
 ---
 
-### 6. Aguarde 2 minutos e teste:
+### 5. Aguarde 2 minutos e teste:
 ```
 https://quiz-search-api.vercel.app/api/search
