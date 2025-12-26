@@ -1,4 +1,4 @@
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -31,7 +31,7 @@ module.exports = async function handler(req, res) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                q: query + ' site:brasilescola.uol.com.br OR site:infoescola.com OR site:gov.br OR site:britannica.com OR site:scielo.br',
+                q: query,
                 gl: 'br',
                 hl: 'pt-br',
                 num: 10
@@ -59,15 +59,15 @@ module.exports = async function handler(req, res) {
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
-};
+}
 ```
 
 ---
 
-### 4. Clique em "Commit changes"
+### 7. Commit e aguarde 2 minutos
 
 ---
 
-### 5. Aguarde 2 minutos e teste:
+### 8. Teste:
 ```
 https://quiz-search-api.vercel.app/api/search
