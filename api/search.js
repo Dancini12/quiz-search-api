@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -43,31 +43,34 @@ export default async function handler(req, res) {
         }
 
         const data = await response.json();
-        const results = (data.organic || []);
-        const content = results.map(r => r.title + ': ' + r.snippet).join('\n\n');
+        const results = data.organic || [];
+        const content = results.map(function(r) { return r.title + ': ' + r.snippet; }).join('\n\n');
 
         return res.status(200).json({
             success: true,
             content: content,
-            results: results.map(r => ({
-                title: r.title,
-                link: r.link,
-                snippet: r.snippet
-            }))
+            results: results
         });
 
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
-}
+};
 ```
 
 ---
 
-### 7. Commit e aguarde 2 minutos
+### 4. IMPORTANTE: Verifique se o código termina com:
+```
+};
+```
 
 ---
 
-### 8. Teste:
+### 5. Clique em "Commit changes"
+
+---
+
+### 6. Aguarde 2 minutos e teste:
 ```
 https://quiz-search-api.vercel.app/api/search
